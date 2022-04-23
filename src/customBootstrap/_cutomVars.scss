@@ -1,0 +1,23 @@
+$primary : #1f7db6;
+$primary-lightened : #5fa9d6;
+$secondary: #1c5a81;
+$dark : #121921;
+$secondary-dark : #372675;
+$margin-nav : 101px;
+$success: rgb(31, 133, 31);
+$danger: rgb(168, 16, 16);
+$info: rgb(21, 21, 226);
+
+
+    
+$theme-colors: (
+    "primary": $primary,
+    "success": $success,
+    "primary-lightened" : $primary-lightened,   
+    "secondary": $secondary,
+    "dark" : $dark,
+    "info" : $info,
+    "danger" : $danger,
+    "secondary-dark" :$secondary-dark
+);
+

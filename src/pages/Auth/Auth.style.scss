@@ -1,0 +1,18 @@
+@import "../../customBootstrap/cutomVars";
+.auth{
+    
+    // margin-top : $margin-nav;
+    // margin-bottom : 105px;
+
+    .form{
+        padding : 2rem;
+        background-color: rgba(228, 226, 226, 0.2);
+        font-weight: 600;
+
+        label{
+        font-size: .8rem !important;
+        font-weight: 600;
+
+        }
+    }
+}

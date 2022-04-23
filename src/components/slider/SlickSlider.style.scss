@@ -1,0 +1,29 @@
+.slick-item {
+  padding: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin: auto 13px;
+}
+.react-multi-carousel-item {
+  margin: 0px 10px;
+//   min-width: 300px !important;
+
+}
+.react-multiple-carousel__arrow--left {
+  left: 0;
+}
+.react-multiple-carousel__arrow--right {
+  right: 0;
+}
+.react-multiple-carousel__arrow {
+  border-radius: 50% !important;
+  background-color: white;
+}
+.react-multiple-carousel__arrow:hover {
+  background-color: rgba(255, 255, 255, 0.63);
+}
+.react-multiple-carousel__arrow::before {
+  color: #4b0082;
+}

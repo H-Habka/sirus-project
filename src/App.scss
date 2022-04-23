@@ -1,0 +1,150 @@
+@import "./customBootstrap/custom.style.scss";
+@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap");
+* {
+  font-family: "Tajawal";
+  border-radius: 0 ;
+  box-sizing: border-box;
+  outline: 0;
+
+}
+body {
+  width: 100vw;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.534);
+  }
+  &::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px #51035c;
+  }
+}
+
+.border-red{
+  border:1px solid red;
+}
+.bg-gray {
+  background-color: #f3f3f3;
+}
+.bg-darkGray {
+  background-color: rgba(101, 102, 102, 0.781) !important;
+}
+.bg-lightBlue {
+  background-color: rgb(225 243 249 / 19%) !important;
+}
+.rounded-btn {
+  border-radius: 15px !important;
+}
+.rounded {
+  border-radius: 15px !important;
+}
+.outline-gray {
+  border-color: #c0c0c0;
+}
+.d-md-flex {
+  @media (max-width: 768px) {
+    display: flex;
+  }
+  @media (max-width: 576px) {
+    flex-direction: column;
+  }
+}
+
+.justtify-md-center {
+  @media (max-width: 768px) {
+    justify-content: center !important;
+  }
+}
+
+.w-lg-25 {
+  @media (min-width: 992px) {
+    width: 25% !important;
+  }
+}
+.px-10 {
+  padding-left: 10rem;
+  padding-right: 10rem;
+  @media (max-width: 1024px){
+    padding-left: 5rem;
+    padding-right: 5rem;
+
+  }
+  @media (max-width: 500px){
+    padding-left: 0;
+    padding-right: 0;
+
+  }
+}
+.sm-small {
+  font-size: small !important;
+}
+.text-sm-center {
+  @media (max-width: 576px) {
+    text-align: center;
+  }
+}
+.mb-sm-3 {
+  @media (max-width: 576px) {
+    margin-bottom: 0.5rem !important;
+  }
+}
+.primary {
+  color: #1f7db6 !important;
+}
+.second-primary {
+  color: #007408 !important;
+}
+.bg-second-primary {
+  background-color: #007408 !important;
+}
+@media (max-width: 576px) {
+  .w-sm-100 {
+    width: 100% !important;
+  }
+  .my-sm-3 {
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important ;
+  }
+  .p-sm-1 {
+    padding: 1rem !important;
+  }
+}
+.bg-white {
+  background-color: #fff !important;
+}
+.info {
+  color: rgb(27, 27, 151) !important;
+}
+.success {
+  color: rgb(31, 133, 31) !important;
+}
+.danger {
+  color: rgb(168, 16, 16);
+}
+.btn {
+  box-shadow: none !important;
+}
+.bg-dark-gray {
+  background-color: #d8d7e1;
+}
+.black {
+  color: #000 !important;
+}
+.form-check-input:focus {
+  border-color: none !important;
+  box-shadow: none !important;
+}
+.form-check-input:checked {
+  background-color: #007408 !important;
+  border-color: #007408 !important;
+}
+.form-check-input {
+  border-radius: 2em !important;
+}
+.smaller {
+  font-size: smaller !important;
+}
+.fw-600{
+  font-weight: 600;
+}

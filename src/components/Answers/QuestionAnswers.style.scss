@@ -1,0 +1,23 @@
+.questionAnswer {
+    .answerTxt {
+      position: relative;
+      border-radius: 3px;
+      &::before {
+        content: "";
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: -25px;
+        left: 50px;
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-bottom: 30px solid #d8d7e1;
+      }
+    }
+
+    img {
+      width: 50px;
+    }
+  
+  }
+  

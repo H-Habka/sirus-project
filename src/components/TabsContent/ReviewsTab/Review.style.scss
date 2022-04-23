@@ -1,0 +1,21 @@
+.small-img{
+    width:100px;
+    height: 100px;
+    // border:1px solid red;
+}
+.review-text{
+    position:relative;
+    z-index:0;
+    &::before{
+    content: '';
+    width:30px;
+    height: 30px;
+    border-bottom:1px solid #dee2e6 ;
+    border-left:1px solid #dee2e6 ;
+    z-index:2;
+    position:absolute;
+    left:-15px;
+    transform: rotate(45deg);
+    background-color: rgba(225, 243, 249, 0.19);
+}
+}

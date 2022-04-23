@@ -1,0 +1,76 @@
+message replay
+place forms
+card component on click property show sub properties
+results page slider filter
+
+<main className="border-red mx-0">
+        <Container fluid className="px-10 mx-0">
+          <FilterBar
+            query={query}
+            setQuery={setQuery}
+            setCurrentPage={setCurrentPage}
+          />
+        </Container>
+        <div className="bg-gray container-fluid border-red mx-0">
+          <div className="row mx-0">
+            <div className="border-red row justify-content-between align-items-center p-1  py-4 px-md-5 mx-0">
+            <div className="col-6 col-md-3">
+              <span className="text-muted">
+                {lastPage === 0
+                  ? lastPageItemNumber
+                  : (lastPage - 1) * 8 + lastPageItemNumber}{" "}
+                results found
+              </span>
+            </div>
+            <div className="col-6 col-md-3">
+              <SelectItems
+                searchTitle="Sort by"
+                multi={false}
+                options={reviews}
+              />
+            </div>
+          </div>
+            <div className="col-12 border px-5">
+              <FilterCard result={result}></FilterCard>
+              {results.length ? (
+                results.map((result) => (
+                  <FilterCard key={result.id} result={result}></FilterCard>
+                ))
+              ) : (
+                <div className="row border-red">
+                  <h3 className="text-center mt-3">could not found</h3>
+                </div>
+              )}
+            </div>
+
+            <div className="border-red row mx-0">
+              {currentPage != 1 ? (
+                <Button
+                  className="mt-2"
+                  onClick={() => {
+                    setCurrentPage(currentPage - 1);
+                  }}
+                >
+                  <BsArrowLeft></BsArrowLeft>
+                </Button>
+              ) : null}
+
+              <span className={`${currentPage == 1 ? "ms-5" : ""}`}>
+                {" "}
+                page {currentPage} of {lastPage === 0 ? 1 : lastPage}{" "}
+              </span>
+
+              {currentPage < lastPage ? (
+                <Button
+                  className="mt-2"
+                  onClick={() => {
+                    setCurrentPage(currentPage + 1);
+                  }}
+                >
+                  <BsArrowRight></BsArrowRight>
+                </Button>
+              ) : null}
+            </div>
+          </div>
+        </div>
+      </main>

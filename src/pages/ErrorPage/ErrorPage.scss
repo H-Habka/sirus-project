@@ -1,0 +1,35 @@
+.error-page-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px ;
+
+
+    .error-page-content{
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+
+    }
+
+    .error-title{
+        font-size: 4rem;
+        width: 10ch;
+        line-height: 3.7rem;
+    }
+
+    .error-details{
+        width: 28ch;
+        font-weight: 300;
+    }
+
+    .error-link-home{
+        width: max-content;
+        padding: 8px 20px;
+
+        .error-link-homeicon{
+             margin-right: 8px;
+             margin-bottom: 7px;
+        }
+    }
+}

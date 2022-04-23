@@ -1,0 +1,12 @@
+
+.custom-link{
+    transition: transform 350ms ease !important;
+    &:hover{
+        color :var(--bs-primary-lightened) !important;
+        transform: scale(1.2);
+    }
+}
+
+.navi{
+    transition: background 0.2s ease;
+}

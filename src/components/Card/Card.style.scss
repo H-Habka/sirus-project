@@ -1,0 +1,13 @@
+.card-box {
+  img {
+    max-height: 170px;
+    object-fit: cover;
+  }
+  .card-footer {
+    // height: 70px;
+    background-color: rgb(255, 255, 255);
+  }
+  .card-text{
+    font-size: .8rem !important;
+  }
+}

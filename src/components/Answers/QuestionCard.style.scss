@@ -1,0 +1,10 @@
+.questionCard{
+
+    @media (max-width: 576px){
+        font-size: smaller !important;
+        .btn{
+            font-size: smaller ;
+
+        }
+    }
+}

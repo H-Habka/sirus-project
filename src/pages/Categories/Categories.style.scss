@@ -1,0 +1,15 @@
+.categories{
+    .item-link{
+        position:relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding:0px !important;
+        margin-bottom: 1rem;
+
+        .title{
+            position:absolute;
+           font-weight: bolder;
+        }
+    }
+}

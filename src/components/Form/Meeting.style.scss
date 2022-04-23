@@ -1,0 +1,66 @@
+.custom-select{
+    display:inline-block;
+    height:calc(2.25rem + 2px);
+    padding:.375rem 1.75rem .375rem .75rem;
+    line-height:1.5;
+    color:#495057;
+    vertical-align:middle;
+    background:#fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right .75rem center;
+    background-size:8px 10px;
+    border:1px solid #ced4da;
+    border-radius:.25rem;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:none}
+    .ms-17{
+        margin-left: 17px;
+    }
+    input , select{
+        margin-bottom: 1rem;
+        }
+        .form-control:focus , .form-select:focus {
+        border-color: #ced4da !important;
+        box-shadow:none !important;}
+
+        .w-90{
+        width: 90%;
+        }
+        .form-text {
+        margin-top: -0.75rem !important;
+        }
+        .mb-03{
+            margin-bottom: 0.3rem;
+        }
+        @media (max-width: 576px) {
+        .mt-sm-1rem {
+        margin-top: 1rem !important;
+        }
+        .w-sm-36{
+        width: 36% !important;
+        }
+        .w-sm-100 {
+        width: 100% !important;}
+        .ms-sm-0{
+        margin-left:0 !important ;
+        }
+        .mt-sm-0 {
+        margin-top: 0 !important;}
+    }
+    @media (min-width: 768px) {
+    .mt-md-55{
+        margin-top: 55px !important;
+        }
+    }
+        
+        .w-60{
+        width: 60%;
+        }
+        .w-30{
+        width: 30%;
+        }
+        .w-90{
+        width: 90%;
+        }
+        .w-92{
+        width: 92%;
+        }

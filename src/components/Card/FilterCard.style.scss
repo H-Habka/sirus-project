@@ -1,0 +1,118 @@
+.filter_card {
+    border-radius: 15px;
+    background-color: white;
+    img {
+        width: 130px;
+    }
+    .data {
+        display: flex;
+        flex-wrap: wrap;
+        .image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            @media (max-width: 768px) {
+                flex-wrap: wrap;
+                padding: 15px 0;
+            }
+        }
+        .profile_data {
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+            margin-bottom: 10px;
+            padding-left: 10px;
+            @media (max-width: 768px) {
+                align-self: end;
+            }
+.profile_icons{
+    svg{
+        margin:0 5px;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}
+        }
+    }
+    .list {
+        list-style: none;
+        display: flex;
+        padding: 0 !important;
+        font-size: 0.89rem;
+        li:not(:first-child) {
+            margin-left: 0.5rem !important;
+        }
+        @media (max-width: 768px) {
+            display: block;
+            font-size: 0.8rem;
+            li:not(:first-child) {
+                margin-left: 0 !important;
+            }
+        }
+    }
+    .detailes {
+        font-weight: 500;
+        padding: 0 0 0 2em;
+        font-size: .9em;
+        @media (max-width: 576px){
+            padding: 0;
+        }
+    }
+    
+    .btn {
+        font-weight: 600;
+        font-size: 0.9rem;
+    }
+    .buttons {
+
+        .lh-small {
+            line-height: 0.4rem !important;
+        }
+        @media (min-width: 1440px) {
+            padding: 10px 3rem;
+        }
+        .col-md-6{
+            @media (max-width: 576px) {
+            width:100%;
+            display: flex;
+            flex-direction: column !important;
+            align-items: center !important;
+        }
+    }
+        .larg-icon {
+            font-size: 4rem;
+            color: lightgray;
+        }
+        .fs-10{
+            font-size: .89rem;
+        }
+    }
+    .btn-group{
+        @media (max-width: 576px){
+            display: flex;
+            flex-direction: column;
+            margin-bottom: .25rem;
+            .btn{
+                margin: 3px auto;
+            }
+        }
+    }
+    .left-btns {     
+        justify-content: revert; 
+        .btn{
+            min-width:30%;
+            margin-bottom: 1rem;
+         @media (min-width: 992px)  {  
+            
+                max-width:100%;
+                min-width:25%;
+                padding-top:0;
+                padding-bottom:0;
+                font-size: .9em;
+                margin-bottom: 10px;
+            }
+
+         } 
+    }
+}

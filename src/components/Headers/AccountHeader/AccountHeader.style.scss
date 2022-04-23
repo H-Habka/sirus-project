@@ -1,0 +1,21 @@
+.relative {
+    position: relative;
+    .editImageForm {
+        position: absolute;
+        top: 50%;
+        display: flex;
+        justify-content: end;
+
+        input {
+            display: none;
+        }
+        svg {
+            position: absolute;
+            left:55px;
+            color: rgb(77, 76, 76);
+            &:hover{
+                cursor: pointer;
+            }
+        }
+    }
+}
