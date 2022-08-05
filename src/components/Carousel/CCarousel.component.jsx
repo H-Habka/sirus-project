@@ -14,58 +14,59 @@ import Image from "../../assets/img/slick.jpg";
 import FileCard from "../Card/FileCard.component";
 import { fetchAllTemplatesInit } from "../../redux/templates/templates-actions";
 import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect"
+import { allTemplates } from '../../redux/templates/templates-selectors'
 
-const CCarsousel = ({fetchAllTemplatesInit}) => {
+const CCarsousel = ({ fetchAllTemplatesInit, allTemplates }) => {
 
 
-  useEffect(() =>{
-    fetchAllTemplatesInit()
-  },[])
+  useEffect(() => {
+    fetchAllTemplatesInit(10, 1)
+  }, [])
 
-  const carouselItems = [
-    {
-      title:
-        "Video Marketing for Small Business Owners - a Specific Strategy Explained",
-      description: "Montina Young, Founder & CEO",
-      image: "https://via.placeholder.com/100",
-      price: "20",
-      currency: "$",
-      priceTime: "per hour",
-    },
-    {
-      title:
-        "Video Marketing for Small Business Owners - a Specific Strategy Explained",
-      description: "Montina Young, Founder & CEO",
-      image: "https://via.placeholder.com/100",
-      price: "20",
-      currency: "$",
-      priceTime: "per hour",
-    },
-    {
-      title:
-        "Video Marketing for Small Business Owners - a Specific Strategy Explained",
-      description: "Montina Young, Founder & CEO",
-      image: "https://via.placeholder.com/100",
-      price: "20",
-      currency: "$",
-      priceTime: "per hour",
-    },
-    {
-      title:
-        "Video Marketing for Small Business Owners - a Specific Strategy Explained",
-      description: "Montina Young, Founder & CEO",
-      image: "https://via.placeholder.com/100",
-      price: "20",
-      currency: "$",
-      priceTime: "per hour",
-    },
-  ];
+  // const carouselItems = [
+  //   {
+  //     title:
+  //       "Video Marketing for Small Business Owners - a Specific Strategy Explained",
+  //     description: "Montina Young, Founder & CEO",
+  //     image: "https://via.placeholder.com/100",
+  //     price: "20",
+  //     currency: "$",
+  //     priceTime: "per hour",
+  //   },
+  //   {
+  //     title:
+  //       "Video Marketing for Small Business Owners - a Specific Strategy Explained",
+  //     description: "Montina Young, Founder & CEO",
+  //     image: "https://via.placeholder.com/100",
+  //     price: "20",
+  //     currency: "$",
+  //     priceTime: "per hour",
+  //   },
+  //   {
+  //     title:
+  //       "Video Marketing for Small Business Owners - a Specific Strategy Explained",
+  //     description: "Montina Young, Founder & CEO",
+  //     image: "https://via.placeholder.com/100",
+  //     price: "20",
+  //     currency: "$",
+  //     priceTime: "per hour",
+  //   },
+  //   {
+  //     title:
+  //       "Video Marketing for Small Business Owners - a Specific Strategy Explained",
+  //     description: "Montina Young, Founder & CEO",
+  //     image: "https://via.placeholder.com/100",
+  //     price: "20",
+  //     currency: "$",
+  //     priceTime: "per hour",
+  //   },
+  // ];
   // const xxl =  useMediaQuery({ query: '(min-width: 1400px)' })
   const xl = useMediaQuery({ query: "(min-width: 1200px)" });
   const lg = useMediaQuery({ query: "(min-width: 992px)" });
   const md = useMediaQuery({ query: "(min-width: 768px)" });
   const sm = useMediaQuery({ query: "(min-width: 576px)" });
-  // const xs =  useMediaQuery({ query: '(max-width: 576px)' })
   const items = xl ? 5 : lg ? 4 : md ? 3 : sm ? 1 : 1;
   return (
     <>
@@ -73,7 +74,7 @@ const CCarsousel = ({fetchAllTemplatesInit}) => {
         <div className="row">
           <Stack className="col-md-8 mx-auto text-center mt-5">
             <h2 className="mt-5 mb-4 fw-bold fs-1">
-            Featured business templates on sirius
+              Featured business templates on sirius
             </h2>
           </Stack>
         </div>
@@ -86,20 +87,25 @@ const CCarsousel = ({fetchAllTemplatesInit}) => {
           autoplayHoverPause
           margin={3}
           items={`${items}`}
+          loop
           nav
 
           navText={["Prev", "Next"]}
         >
-          {/* {carouselItems.map(({ price, image, title, description, priceTime, currency }, idx) => (
-                        <Card key={idx} image={image} title={title} description={description} >
 
-                        </Card>
-                    ))} */}
-          <FileCard
-            title="Devotion Dresses "
-            category="Legal Agreements"
-            
-          ></FileCard>
+          {
+            allTemplates.map((template,idx) => (
+              <FileCard
+                intryId={template.intryId}
+                key={idx}
+                fileType= {template.fileType}
+                title={template.name}
+                category={template.catName}
+                fileUrl={template.fileUrl}
+                description={template.description}
+              ></FileCard>
+            ))
+          }
         </OwlCarousel>
         ;
       </div>
@@ -108,7 +114,11 @@ const CCarsousel = ({fetchAllTemplatesInit}) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchAllTemplatesInit : () => dispatch(fetchAllTemplatesInit())
+  fetchAllTemplatesInit: (PageSize, CurrentPage) => dispatch(fetchAllTemplatesInit(PageSize, CurrentPage))
 })
 
-export default connect(null,mapDispatchToProps)(CCarsousel)
+const mapStateToProps = createStructuredSelector({
+  allTemplates: allTemplates
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CCarsousel)

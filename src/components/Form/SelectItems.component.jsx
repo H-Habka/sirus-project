@@ -9,7 +9,8 @@ export default class SelectItems extends Component {
         this.props.options.map(item => ({
             label: item.label,
             value: item.value,
-            cat: item.cat
+            cat: item.cat,
+            type : item.type
         }));
 
     customContentRenderer = ({ props, state, methods }) => (
@@ -72,6 +73,7 @@ export default class SelectItems extends Component {
                     dropdownRenderer={this.props.checkBox ? this.customDropdownRenderer : ''}
                     onChange={this.props.onChange}
                     values={[]}
+                    
                     options={this.options()}
                     className={this.props.classes + ' rounded'}
                 />
@@ -85,7 +87,22 @@ export default class SelectItems extends Component {
 
 const StyledSelect = styled(Select)`
 .react-dropdown-select-dropdown {
-  overflow: initial;
+  overflow-y: scroll;
+  width:max-content;
+}
+.react-dropdown-select-dropdown::-webkit-scrollbar {
+    width: 2px;
+    height: 100%;
+}
+.react-dropdown-select-dropdown::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    
+}
+.react-dropdown-select-dropdown::-webkit-scrollbar-thumb {
+    background: #888;
+}
+.react-dropdown-select-dropdown::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
 `;
 
@@ -109,7 +126,7 @@ input {
 const Items = styled.div`
 overflow: auto;
 min-height: 10px;
-max-height: 200px;
+max-height: 500px;
 `;
 
 const Item = styled.div`

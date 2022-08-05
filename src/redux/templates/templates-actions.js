@@ -18,12 +18,13 @@ const fetchAllTemplatesFail = (err) => ({
 })
 
 
-export const fetchAllTemplatesInit = () => dispatch => {
+export const fetchAllTemplatesInit = (PageSize,CurrentPage) => dispatch => {
 
     dispatch(fetchAllTemplatesStart())
-    api.sirius.templates.getAll().then(res => {
+    api.sirius.templates.getAll(PageSize,CurrentPage).then(res => {
         dispatch(fetchAllTemplatesSucc(res.data))
     }).catch((err => {
         dispatch(fetchAllTemplatesFail(err))
     }))
 }
+

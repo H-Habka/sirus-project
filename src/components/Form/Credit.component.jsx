@@ -10,28 +10,23 @@ const CreditForm = () => {
               <label forhtml="inputCredit" className="form-label fw-bold">
                 By Credit
               </label>
-              <select id="inputCredit" className="form-select rounded ">
-                <option selected>$0.00</option>
-                <option className="option">$20 total 5 star</option>
-                {/* <span className="form-text">$1/stars</span> */}
-                <option>$5 total 5 stars</option>
-                <option>$100 total 5 stars</option>
+              <select id="inputCredit" className="form-select  ">
+                <option>$0.00</option>
+                <option>$20 total 20 star</option>
+                
+                <option>$50 total 55 stars</option>
+                <option>$100 total 125 stars</option>
               </select>
             </div>
           </div>
           <div className="col-lg-6 px-md-5">
             <div className="col-12 mt-4">
-              <button type="submit" className="btn btn-primary rounded w-100 white">
+              <button type="submit" className="btn btn-primary  w-100 white">
                 Buy Now
               </button>
-              <div className="border my-4 p-2 boxed-text">
+              <div className="border mb-4 mt-1 p-2 boxed-text">
                 <p className="text-muted fw-bold">
                   Stars are Nejmy’s online currency. If you see a Mentor that
-                  you like and you want to boom a meeting with, then you use
-                  stars to book (you will receive their meeting confirmation
-                  number to active meetings and to your email address). The
-                  amount of stars required to book a meeting varies depending on
-                  the mentor price per hour
                 </p>
               </div>
             </div>
@@ -48,7 +43,7 @@ const CreditForm = () => {
                 <input
                   type="text"
                   id="inputEranedCredit"
-                  className="form-control rounded mb-4"
+                  className="form-control  mb-4"
                   placeholder="$0.00"
                 />
                 <div id="inputEranedCredit" className="form-text">
@@ -65,7 +60,7 @@ const CreditForm = () => {
                 <input
                   type="text"
                   id="inputCreditBalance"
-                  className="form-control rounded mb-4"
+                  className="form-control  mb-4"
                   placeholder="$0.00"
                   disabled
                 />
@@ -76,7 +71,7 @@ const CreditForm = () => {
             </div>
             <div className="col-lg-6 px-md-5 pt-4">
               <div className="col-12 mt-4">
-                <button type="submit" className="btn btn-success rounded w-100">
+                <button type="submit" className="btn btn-success  w-100">
                   Requset Withdrawal
                 </button>
               </div>

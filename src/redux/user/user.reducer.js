@@ -32,6 +32,11 @@ export const userReducer = (state = INITAL_STATE, action) => {
                 currentUser: null,
                 error: ""
             }
+        // case usersTypes.COMPLETE_USER_PROFILE:
+        //     return {
+        //         ...state,
+        //         currentUser : {...state.currentUser,...action.payload}
+        //     }
         default:
             return state
     }

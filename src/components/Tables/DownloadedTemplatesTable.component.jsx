@@ -1,27 +1,39 @@
-import {React ,Fragment }from 'react';
+import { React, Fragment, useEffect } from 'react';
 import ReactDatatable from '@ashvin27/react-datatable';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { templatesForTemplatePage } from '../../redux/templates/templates-selectors';
+import { fetchAllTemplatesInit } from '../../redux/templates/templates-actions';
 
-const DownloadedTemplatesTable = () => {
-    const config={
+const DownloadedTemplatesTable = ({ templatesForTemplatePage ,fetchAllTemplatesInit}) => {
+    const config = {
         page_size: 10,
-        length_menu: [ 10, 20, 50 ],
+        length_menu: [10, 20, 50],
         // button: {
         //     excel: true,
         //     print: true,
         //     extra: true,
         // }
     };
-    const records=[
+
+    useEffect(() => {
+        fetchAllTemplatesInit()
+      }, [])
+
+    useEffect(() => {
+        console.log({ templatesForTemplatePage })
+    }, [templatesForTemplatePage])
+    const records = [
         {
-          "id": "1",
-          "template": "NJ 1342331",
-          "date": "January 22, 2022",
-          "name": "From 11:00 AM To 12:00 PM",
-          "size": "Rami Haddad",
-          "kind": "SEO",
+            "id": "1",
+            "template": "NJ 1342331",
+            "date": "January 22, 2022",
+            "name": "From 11:00 AM To 12:00 PM",
+            "size": "Rami Haddad",
+            "kind": "SEO",
         },
-      ];
-    const columns= [
+    ];
+    const columns = [
         {
             key: "template",
             text: "Template",
@@ -55,17 +67,17 @@ const DownloadedTemplatesTable = () => {
             key: "action",
             text: "",
             className: "action info  fw-bold",
-            align: "left",            
-            cell: record => { 
+            align: "left",
+            cell: record => {
                 return (
                     <Fragment>
                         <div className="row">
-                        <button
-                            className="btn col-md-5 mx-2 w-75 rounded btn-success btn-sm px-3 d-block mx-auto"
-                            // onClick={() => editRecord(record)}
-                            style={{ borderRadius: '0'}}>
-                            Download
-                        </button>
+                            <button
+                                className="btn col-md-5 mx-2 w-75 rounded btn-success btn-sm px-3 d-block mx-auto"
+                                onClick={() => alert(record.id)}
+                                style={{ borderRadius: '0' }}>
+                                Download
+                            </button>
 
                         </div>
                     </Fragment>
@@ -75,20 +87,27 @@ const DownloadedTemplatesTable = () => {
     ];
     return (
         <>
-          
-          <div className="bg-white p-lg-5 p-3">
+
+            <div className="bg-white p-lg-5 p-3">
                 <ReactDatatable
                     config={config}
-                    records={records}
+                    records={templatesForTemplatePage}
                     columns={columns}
                     dynamic={true}
                     tHeadClassName="text-muted fw-bold"
-                    // extraButtons={extraButtons}
+                // extraButtons={extraButtons}
                 />
             </div>
         </>
     );
 };
 
+const mapDispatchToProps = dispatch => ({
+    fetchAllTemplatesInit: (PageSize, CurrentPage) => dispatch(fetchAllTemplatesInit(PageSize, CurrentPage))
+})
 
-export default DownloadedTemplatesTable;
+const mapStateToProps = createStructuredSelector({
+    templatesForTemplatePage: templatesForTemplatePage
+})
+
+export default connect(mapStateToProps,mapDispatchToProps)(DownloadedTemplatesTable);

@@ -34,6 +34,7 @@ import Templates from './pages/Templates/Templates.page';
 import Terms from './pages/Terms/Terms.page';
 import ActiveMeetingsTable from './components/Tables/DownloadedTemplatesTable.component';
 import DownloadedTemplatesTable from './components/Tables/DownloadedTemplatesTable.component';
+import Interview from './components/Interviews/Interview.page';
 
 const App = ({ user }) => {
     const location = useLocation();
@@ -58,8 +59,8 @@ const App = ({ user }) => {
                     <Route path="favorites" element={<Account>  <Favorites></Favorites> </Account>}></Route>
                 </Route>
                 <Route path="/terms-of-use" element={<Terms />}></Route>
-                <Route path="/template" element={<Templates />}></Route>
-                {/* <Route path="/interview" element={<Templates />}></Route> */}
+                <Route path="/template/:templateId" element={<Templates />}></Route>
+                <Route path="/interview" element={<Interview />}></Route>
 
                 <Route path="*" element={<ErrorPage />}></Route>
             </Routes>

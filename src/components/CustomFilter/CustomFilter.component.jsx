@@ -1,94 +1,74 @@
-import React, { useState } from "react";
-import { Dropdown } from "react-bootstrap";
-import { BsPlus, BsChevronDown } from "react-icons/bs";
-import Search from "../SearchBar/Search.component";
+import React, { useEffect, useState } from 'react';
+import { Accordion, Button, Dropdown } from 'react-bootstrap';
+import { BsPlus, BsChevronDown } from 'react-icons/bs';
 
-import "./CustomFilter.style.scss";
+
+import { connect } from 'react-redux';
+
+
+import "./CustomFilter.style.scss"
 const CustomFilter = ({ categories, filterName, setFilters, filters }) => {
-  const handleExpand = (e) => {
-    const items = e.target.parentElement.querySelectorAll(".item");
-    e.target.querySelector(".icon").classList.contains("rotate")
-      ? e.target.querySelector(".icon").classList.remove("rotate")
-      : e.target.querySelector(".icon").classList.add("rotate");
-    items.forEach((item) => {
-      item.classList.contains("collapsed")
-        ? item.classList.remove("collapsed")
-        : item.classList.add("collapsed");
-    });
-  };
 
-  const [searchQuery, setsearchQuery] = useState("");
-  const onChangeHandler = (e) => {
-    setsearchQuery(e.target.value);
-  };
-  return (
-    <div className="filter">
-      <div>
-        <Dropdown className="border rounded">
-          <Dropdown.Toggle variant="white" id="dropdown-basic">
-            <span className="fw-bold me-3"> {filterName} </span>
-            
-            <BsChevronDown className="bs-chev" />
-          </Dropdown.Toggle>
+    const [query, setQuery] = useState("")
+    const [filterdCategories, setFilterdCategories] = useState(categories)
+    const handleSearch = (e) => {
+        setQuery(e.target.value)
+    }
 
-          <Dropdown.Menu>
-            <div className="search-wrapper">
-              <Search
-                placeholder={"Search"}
-                onChange={onChangeHandler}
-              ></Search>
+
+    useEffect(() => {
+
+        if (categories)
+            setFilterdCategories([...categories.filter(cat => cat.name.includes(query))])
+
+    }, [query])
+
+
+    return (
+        <div>
+
+            <div className="filter">
+                <Dropdown>
+                    <Dropdown.Toggle variant="white" id="dropdown-basic">
+                        {filterName}
+                        <BsChevronDown className='bs-chev' />
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu className='px-3 my-md-2'>
+                        <input className='rounded form-control' placeholder='search' onChange={handleSearch} />
+                        <Accordion defaultActiveKey="0">
+
+                            {
+                                filterdCategories?.map((item, idx) => (
+                                    <Accordion.Item eventKey={idx}>
+                                        <Accordion.Header>{item.name}</Accordion.Header>
+                                        <Accordion.Body >
+
+                                            <div className="overflow-scroll subs-container">
+                                                {
+                                                    item?.subs?.map(sub => (
+                                                        <p style={{ cursor: "pointer" }} onClick={(e) => { filters.find(item => item.id === sub.id) ? setFilters([...filters.filter(item => item?.id != sub?.id)]) : setFilters([...filters, { id: sub.id, text: sub.name, value:sub.id , type:"category" }]) }}>{sub.name}</p>
+                                                    ))
+
+                                                }
+                                            </div>
+                                        </Accordion.Body>
+                                    </Accordion.Item>
+                                ))
+                            }
+
+                        </Accordion>
+
+                    </Dropdown.Menu>
+                </Dropdown>
             </div>
-            {categories.map((cat, idx) => (
-              <div key={idx} className="category-wrapper">
-                <div className="title-wrapper" onClick={handleExpand}>
-                  <h6>{cat.name}</h6> <BsPlus className="icon"></BsPlus>
-                </div>
-                {cat.items
-                  .filter((item) => {
-                    return item.includes(searchQuery);
-                  })
-                  .map((item, idx) => (
-                    <div key={idx} className="item collapsed">
-                      <input
-                        type="checkbox"
-                        checked={
-                          filters.find((filter) => filter.label === item)
-                            ? true
-                            : false
-                        }
-                        onClick={() => {
-                          console.log(setFilters);
-                          let filter = {
-                            cat: "catergories",
-                            label: item,
-                            value: item,
-                          };
-
-                          let idx = filters.findIndex((filter) => {
-                            return filter.cat === "catergories";
-                          });
-
-                          if (idx >= 0) {
-                            filters[idx] = { ...filter, cat: "catergories" };
-                            setFilters([...filters]);
-                          } else {
-                            setFilters([
-                              ...filters,
-                              { ...filter, cat: "catergories" },
-                            ]);
-                          }
-                        }}
-                      />
-                      <p>{item}</p>
-                    </div>
-                  ))}
-              </div>
-            ))}
-          </Dropdown.Menu>
-        </Dropdown>
-      </div>
-    </div>
-  );
+        </div>
+    );
 };
 
-export default CustomFilter;
+
+const mapStateToProps = state => ({
+    categories: state.categories.data
+})
+
+export default connect(mapStateToProps)(CustomFilter);

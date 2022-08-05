@@ -21,37 +21,37 @@ const Results = ({ queryNone }) => {
     params.query ? setQuery(params.query) : setQuery("");
   }, []);
 
-  useEffect(() => {
-    api.users
-      .getAll(query, currentPage)
-      .then((res) => {
-        res?.headers?.link
-          ? setLastPage(
-              res.headers.link
-                .split(",")[2]
-                .split(";")[0]
-                .split("_page=")[1]
-                .split("&")[0]
-            )
-          : setLastPage(0);
-        setResults(res.data);
-      })
-      .catch((error) => console.error(error));
+  // useEffect(() => {
+  //   api.users
+  //     .getAll(query, currentPage)
+  //     .then((res) => {
+  //       res?.headers?.link
+  //         ? setLastPage(
+  //             res.headers.link
+  //               .split(",")[2]
+  //               .split(";")[0]
+  //               .split("_page=")[1]
+  //               .split("&")[0]
+  //           )
+  //         : setLastPage(0);
+  //       setResults(res.data);
+  //     })
+  //     .catch((error) => console.error(error));
 
-    api.users.getAll(query, lastPage).then((res) => {
-      console.log(res);
-      setLastPageItemNumber(res.data.length);
-    });
-  }, [query]);
+  //   api.users.getAll(query, lastPage).then((res) => {
+  //     console.log(res);
+  //     setLastPageItemNumber(res.data.length);
+  //   });
+  // }, [query]);
 
-  useEffect(() => {
-    api.users
-      .getAll(query, currentPage)
-      .then((res) => {
-        setResults(res.data);
-      })
-      .catch((error) => console.error(error));
-  }, [query, currentPage]);
+  // useEffect(() => {
+  //   api.users
+  //     .getAll(query, currentPage)
+  //     .then((res) => {
+  //       setResults(res.data);
+  //     })
+  //     .catch((error) => console.error(error));
+  // }, [query, currentPage]);
 
   const reviews = [
     { id: 1, label: "Reviews", value: "Reviews" },

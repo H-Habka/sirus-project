@@ -1,19 +1,17 @@
 .filter{
+    
     margin-top: 10px;
-    display: flex;
-    align-items: center;
     .bs-chev{
-        font-size:12px;
-        font-weight: 800;
+        font-size:10px;
     }
     .dropdown-menu{
-        width : 200px;
+        width : 300px;
     }
     .dropdown-toggle{
-        font-size : 14px;
+        font-size : 12px;
         font-weight: bold;
-        // border: 1px solid rgb(201, 191, 191);
-        // border-radius: 100px;
+        border: 1px solid rgb(201, 191, 191);
+        border-radius: 100px !important;
     }
     .dropdown-toggle::after{
         display: none;
@@ -25,8 +23,8 @@
     .category-wrapper{
         padding : 10px;
         
-        
         .title-wrapper{
+
             display: flex;
             justify-content: space-between;
             position: relative;
@@ -49,7 +47,9 @@
         }
         .item{
             display: flex;
+            flex-wrap: nowrap;
             align-items: center;
+            margin-block: 10px;
             &.collapsed
             {
                 display:none;
@@ -64,10 +64,38 @@
                 margin-bottom : 0px !important;
                 padding-bottom: 0px !important;
             }
+            
         }
+    }
+    .btn{
+        font-size: 13px !important;
+        padding: 7px 12px;
+        border-radius: 15px !important;
     }
     .btn:focus{
         box-shadow: none !important;
-        background-color: none
+        background-color: rgb(214, 208, 208);
+    }
+}
+
+.subs-container{
+    max-height: 150px;
+
+    &::-webkit-scrollbar {
+        width: 2px;
+        height: 100%;
+    }
+    /* Track */
+    &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        
+    }
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+        background: #555;
     }
 }

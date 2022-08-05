@@ -21,7 +21,10 @@ import Favorites from "../../Favorite/Favorites.component";
 import { Button } from "react-bootstrap";
 import "./AccountHeader.style.scss";
 import DownloadedTemplatesTable from "../../Tables/DownloadedTemplatesTable.component";
-const AccountHeader = (props) => {
+import { createStructuredSelector } from "reselect";
+import { connect } from "react-redux";
+import { selectCurrentUser } from "../../../redux/user/user.selector";
+const AccountHeader = ({onChange,currentUser}) => {
   const buttons = [
     {
       item: "Account",
@@ -115,8 +118,8 @@ const AccountHeader = (props) => {
             </form>
           </div>
           <div className="col-12 d-flex flex-column align-items-center">
-            <p className="name mb-0 fw-bold">Marwan Zyadat</p>
-            <p className="email fs-6">marwan@nejmy.com</p>
+            <p className="name mb-0 fw-bold">{currentUser?.displayName}</p>
+            <p className="email fs-6">{currentUser?.website}</p>
           </div>
           <div className="col-12  d-flex justify-content-center">
             <ul className="text-muted list-group list-group-horizontal-md list-unstyled">
@@ -162,7 +165,7 @@ const AccountHeader = (props) => {
                 handleClick={() => {
                   loadItems(index);
                   setPrimary(0);
-                  props.onChange();
+                  onChange();
                 }}
               ></CustomButton>
             ))}
@@ -192,7 +195,7 @@ const AccountHeader = (props) => {
                 variant="empty"
                 className={primary === index ? "primary fw-bold" : "fw-bold"}
                 onClick={(e) => {
-                  props.onChange(item.component);
+                  onChange(item.component);
                   setPrimary(index);
                 }}
               >
@@ -212,4 +215,8 @@ const AccountHeader = (props) => {
   );
 };
 
-export default AccountHeader;
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser
+})
+
+export default connect(mapStateToProps)(AccountHeader)

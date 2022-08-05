@@ -21,17 +21,17 @@ const BootstrapProfile = ({ currentUser, id }) => {
   const [user, setUser] = useState({});
   const navigate = useNavigate();
 
-  useEffect(() => {
-    api.users
-      .getById(id)
-      .then(({ data }) => {
-        setUser(data);
-      })
-      .catch((e) => {
-        navigate("../ErrorPage");
-        console.log(e);
-      });
-  }, [id]);
+  // useEffect(() => {
+  //   api.users
+  //     .getById(id)
+  //     .then(({ data }) => {
+  //       setUser(data);
+  //     })
+  //     .catch((e) => {
+  //       navigate("../ErrorPage");
+  //       console.log(e);
+  //     });
+  // }, [id]);
 
   return (
     <>

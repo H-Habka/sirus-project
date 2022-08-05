@@ -19,7 +19,6 @@ export const SignUpSucc = (currentUser) => {
     )
 }
 
-
 export const SignUpFail = (error) => {
     return (
         {
@@ -34,8 +33,6 @@ export const userLogOut = () => {
         type: usersTypes.USER_LOG_OUT
     })
 }
-
-
 
 export const signUpInitiator = (userCredentials, navigate) => dispatch => {
     dispatch(SignUpStart())
@@ -57,9 +54,11 @@ export const signUpInitiator = (userCredentials, navigate) => dispatch => {
             console.log(err)
         })
     } else {
-        api.users.signIn({ userName: userCredentials.email, password: userCredentials.password }).then(res => {
-            api.users.getById(res.data.id).then(res => {
-                dispatch(SignUpSucc(res.data))
+        api.users.signIn({ userName: userCredentials.email, password: userCredentials.password }).then(res1 => {
+            api.sirius.users.getUserById(res1.data.id).then(res2 => {
+                delete res1.data.id
+                console.log(res2)
+                dispatch(SignUpSucc({...res2.data, ...res1.data}))
                 navigate("/")
             }).catch(e => {
                 if (e.response.status === 401)
@@ -69,7 +68,7 @@ export const signUpInitiator = (userCredentials, navigate) => dispatch => {
                 dispatch(SignUpFail("UNAUTHORIZED"))
             })
         }).catch(e => {
-            if (e.response.status === 401)
+            if (e?.response?.status === 401)
                 dispatch(SignUpFail("UNAUTHORIZED"))
             else
                 dispatch(e.message)
@@ -80,16 +79,10 @@ export const signUpInitiator = (userCredentials, navigate) => dispatch => {
 
 }
 
-
-
-
-
-
-
-
-
-
-
+// export const completeUserProfile = (userData) => ({
+//     type: usersTypes.COMPLETE_USER_PROFILE,
+//     payload: userData
+// })
 
 
 
@@ -168,3 +161,5 @@ export const signUpInitiator = (userCredentials, navigate) => dispatch => {
 
 //     }
 // }
+
+
